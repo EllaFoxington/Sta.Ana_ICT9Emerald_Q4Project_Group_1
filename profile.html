@@ -1,293 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Profile || School of Friendship </title>
-    <style>
-body {
-    margin: 0;
-    font-family: Georgia, serif;
-    display: flex;
+<meta charset="UTF-8">
+<title>Profile || School of Friendship</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand', sans-serif;
 }
 
-.sidebar {
-    width: 230px;
-    height: 100vh;
-    background: #560883;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    position: fixed;
+body{
+    display:flex;
+    background:#f3f3f3;
 }
 
-.logo {
-    color: white;
-    text-align: left;
-    font-size: 30px;
-    margin-bottom: 30px;
+.sidebar{
+    width:230px;
+    height:100vh;
+    background:#560883;
+    display:flex;
+    flex-direction:column;
+    padding-top:20px;
+    position:fixed;
+    left:0;
+    top:0;
 }
 
-.nav-item {
-    color: #ffe5fe;
-    text-decoration: none;
-    padding: 15px 25px;
-    display: block;
-    transition: 0.3s;
+.logo{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.nav-item:hover {
-    background: #a351c9;
-    color: white;
+.logo img{
+    width:60%;
+    animation:float 3s ease-in-out infinite;
 }
 
-.nav-item.active {
-    background:  #a351c9;
-    border-left: 4px solid #98228a;
-    font-weight: bold;
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
 }
 
-.navbutton {
-    height: 100%;
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #560883;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
+.nav-item{
+    color:#ffe5fe;
+    text-decoration:none;
+    padding:15px 25px;
+    display:block;
+    transition:0.3s;
 }
 
-.navbutton:hover {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
+.nav-item:hover{
+    background:#a351c9;
+    color:white;
 }
 
-.navbutton:focus {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
-    font-weight: bold;
+.nav-item.active{
+    background:#a351c9;
+    border-left:4px solid #98228a;
+    font-weight:bold;
 }
 
-.content {
-    margin-left: 230px;
-    padding: 20px;
-    width: 100%;
+.navbutton{
+    background:none;
+    border:none;
+    color:#ffe5fe;
+    font-family:'Quicksand', sans-serif;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.navbutton:hover{
+    color:white;
+}
+
+.content{
+    margin-left:230px;
+    padding:30px;
+    width:100%;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    width:600px;
+    margin:auto;
+    box-shadow:0 0 12px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+h1{
+    color:#560883;
+    margin-bottom:15px;
 }
 
 .alert-box{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
 }
 
 .alert-content{
-    background-color:#ffe5fe;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.alert-content h2{
-    font-size: 22px;
-    margin-bottom: 10px;
-    color:#333;
-}
-
-.alert-content p{
-    font-size: 16px;
-    margin-bottom: 20px;
-    color:#666;
+    background:#ffe5fe;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
+    text-align:center;
 }
 
 .alert-content button{
-    padding: 10px 20px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    border: none;
-    cursor: pointer;
-    border-radius: 10%;
+    padding:10px 20px;
+    background:#a351c9;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
-
-.alert-content a{
-    padding: 10px 20px;
-    color:#ffe5fe; 
-    border-radius: 10%;
-}
-
-#displayArea {
-        color: #000000;
-        font-weight: bold;
-        font-size: 24px;    
-    }
 
 </style>
 </head>
+
 <body>
 
-    <nav class="sidebar">
-        <div class="logo">✨</div>
+<nav class="sidebar">
 
-        <a href="dashboard.html" class="nav-item">Dashboard</a>
-        <a href="notebook.html" class="nav-item">Virtual Notebooks</a>
-        <a href="tasks.html" class="nav-item">Tasks</a>
-        <a href="profile.html" class="nav-item active">Profile</a>
-        <a href="#" class="nav-item"><button class="navbutton" id="showAlert" onclick="('This is a navbar alert!')"><h3>Logout</h3></button></a>
-    </nav>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <a href="dashboard.html" class="nav-item">Dashboard</a>
+    <a href="notebooks.html" class="nav-item">Virtual Notebooks</a>
+    <a href="tasks.html" class="nav-item">Tasks</a>
+    <a href="profile.html" class="nav-item active">Profile</a>
+
+    <a class="nav-item">
+        <button class="navbutton" id="showAlert">Logout</button>
+    </a>
+
+</nav>
 
 <div id="customAlert" class="alert-box">
     <div class="alert-content">
         <h2>Are you SURE you want to log out?</h2>
         <p>(this cannot be undone)</p>
-        <button onclick="logout()" id="confirmBtn" class="confirmBtn"><a href="index.html"> im sure </a></button>
-    </div>
-
-</div>
-    
-   <main class="content
-    text-center 
-    justify-content-center 
-    d-flex
-    align-items-center">
-
-    <div class="card mb-3 mx-auto" style="border-radius: 10%; padding: 15%;">
-        <div class="card-body text-center">
-            <h1 class="card-title" style="color: #560883;">Profile</h1>
-            <div class="left-panel mb-4">
-                <img id="profileImagePreview" src="https://avatarfiles.alphacoders.com/303/thumb-1920-303678.gif"
-                    style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #a351c9; box-shadow: 0 6px 18px rgba(0,0,0,0.15); margin-bottom: 15px;"
-                    alt="Profile image">
-                <br>
-                <button type="button" id="chooseFileBtn" class="btn btn-primary" style="background-color: #a351c9; border-color: #a351c9;">Choose File</button>
-                <input type="file" id="profileImageInput" accept="image/*" class="d-none">
-            </div> 
-            <p>You may upload a new profile image at any time!</p>
-            <h1>Student Information</h1>
-        <br>
-        <p><span id="displayArea1"></span></p>
-        <br>
-        <h3>Student ID</h3>
-        <div id="randomNumber">0</div>
-
-    
-        <br>
-        <h3>Password</h3>
-        <p><span id="displayArea2"></span></p>
-        <br>
-        <h3>Contact Number</h3>
-        <p><span id="displayArea3"></span></p>
-        <br>
-        <h3>Email Address</h3>
-        <p><span id="displayArea4"></span></p>
-        <br>
-        <h3>Pony Type</h3>
-        <p>Unicorn</p>
+        <button onclick="logout()">I'm sure</button>
     </div>
 </div>
-    </main>
 
+<div class="content">
+
+<div class="card">
+
+    <h1>Profile</h1>
+
+    <img id="profileImagePreview"
+    src="https://avatarfiles.alphacoders.com/303/thumb-1920-303678.gif"
+    style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid #a351c9;">
+
+    <br><br>
+
+    <button id="chooseFileBtn"
+    style="background:#a351c9;color:white;border:none;padding:10px;border-radius:10px;">
+    Choose File
+    </button>
+
+    <input type="file" id="profileImageInput" accept="image/*" hidden>
+
+    <h3>Student Information</h3>
+    <p id="displayArea1"></p>
+
+    <h3>Student ID</h3>
+    <div id="randomNumber"></div>
+
+    <h3>Password</h3>
+    <p id="displayArea2"></p>
+
+    <h3>Contact</h3>
+    <p id="displayArea3"></p>
+
+    <h3>Email</h3>
+    <p id="displayArea4"></p>
+
+    <h3>Pony Type</h3>
+    <p>Unicorn</p>
+
+</div>
+
+</div>
 
 <script>
 
-    const chooseFileBtn = document.getElementById('chooseFileBtn');
-    const profileImageInput = document.getElementById('profileImageInput');
-    const profileImagePreview = document.getElementById('profileImagePreview');
+const chooseFileBtn=document.getElementById('chooseFileBtn');
+const input=document.getElementById('profileImageInput');
+const preview=document.getElementById('profileImagePreview');
 
-    if (chooseFileBtn && profileImageInput && profileImagePreview) {
-        chooseFileBtn.addEventListener('click', function() {
-            profileImageInput.click();
-        });
+chooseFileBtn.onclick=()=>input.click();
 
-        profileImageInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                profileImagePreview.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        });
-    }
+input.onchange=e=>{
+const file=e.target.files[0];
+const reader=new FileReader();
+reader.onload=()=>preview.src=reader.result;
+reader.readAsDataURL(file);
+};
 
-       const links = document.querySelectorAll(".nav-item");
+document.getElementById("showAlert").onclick=function(){
+document.getElementById("customAlert").style.display="flex";
+};
 
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            links.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
-        });
-    });
+function logout(){
+localStorage.clear();
+window.location.href="index.html";
+}
 
-    const showAlertBtn = document.getElementById('showAlert');
-    const customAlert = document.getElementById('customAlert');
-    const confirmBtn = document.getElementById('confirmBtn');
+function generate(){
+const min=1000000000;
+const max=9999999999;
+document.getElementById("randomNumber").innerText=
+Math.floor(Math.random()*(max-min+1))+min;
+}
 
-    showAlertBtn.addEventListener('click', function(){
-    customAlert.style.display ='flex';
-    });
+function display(){
+document.getElementById('displayArea1').innerText=localStorage.getItem('sharedText1')||"Data Not Found";
+document.getElementById('displayArea2').innerText=localStorage.getItem('sharedText2')||"Data Not Found";
+document.getElementById('displayArea3').innerText=localStorage.getItem('sharedText3')||"Data Not Found";
+document.getElementById('displayArea4').innerText=localStorage.getItem('sharedText4')||"Data Not Found";
+}
 
-    confirmBtn.addEventListener('click', function(){
-        customAlert.style.display = 'none';
+window.onload=()=>{
+generate();
+display();
+};
 
-    });
-
-    function displayData() {
-        const name = localStorage.getItem('sharedText1');
-        const pass = localStorage.getItem('sharedText2');
-        const phone = localStorage.getItem('sharedText3');
-        const email = localStorage.getItem('sharedText4');
-
-
-        document.getElementById('displayArea1').innerText = name ? name : "Data Not Found";
-        document.getElementById('displayArea2').innerText = pass ? pass : "Data Not Found";
-        document.getElementById('displayArea3').innerText = phone ? phone : "Data Not Found";
-        document.getElementById('displayArea4').innerText = email ? email : "Data Not Found";
-    }
-
-    function generateRandom() {
-        const min = 3252026143;
-        const max = 9417531143;
-        const num = Math.floor(Math.random() * (max - min + 1)) + min;
-        document.getElementById('randomNumber').innerText = num;
-    }
-
-    function logout() {
-        localStorage.clear(); 
-        window.location.href = 'index.html'; 
-    }
-
-    window.onload = function() {
-        displayData();
-        generateRandom();
-    };
 </script>
-</section>
-<br><br><br>
 
-<div class="footer"></div>
 </body>
 </html>
