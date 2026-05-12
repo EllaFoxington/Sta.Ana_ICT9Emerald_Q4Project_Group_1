@@ -10,80 +10,57 @@ body {
     margin: 0;
     font-family: Georgia, serif;
     display: flex;
-
+    
 }
 
-.sidebar {
-    width: 230px;
-    height: 100vh;
-    background: #560883;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    position: fixed;
+@keyframes bgFloat {
+    from { background-position: center top; }
+    to { background-position: center bottom; }
 }
 
-.logo {
-    color: white;
-    text-align: left;
-    font-size: 30px;
-    margin-bottom: 30px;
+.sidebar{
+    width:230px;
+    height:100vh;
+    background:#560883;
+    display:flex;
+    flex-direction:column;
+    padding-top:20px;
+    position:fixed;
+    left:0;
+    top:0;
 }
-
-.nav-item {
-    color: #ffe5fe;
-    text-decoration: none;
-    padding: 15px 25px;
-    display: block;
-    transition: 0.3s;
+.logo{
+    color:white;
+    text-align:center;
+    font-size:40px;
+    margin-bottom:30px;
+}
+.nav-item{
+    color:#ffe5fe;
+    text-decoration:none;
+    padding:15px 25px;
+    display:block;
+    transition:0.3s;
 }
 
 .nav-item:hover {
     background: #a351c9;
     color: white;
+    transform: translateX(5px);
 }
 
-.nav-item.active {
-    background:  #a351c9;
-    border-left: 4px solid #98228a;
-    font-weight: bold;
+.nav-item.active{
+    background:#a351c9;
+    border-left:4px solid #98228a;
+    font-weight:bold;
 }
-
-.navbutton {
-    height: 100%;
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #560883;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
-}
-
-.navbutton:hover {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
-}
-
-.navbutton:focus {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
-    font-weight: bold;
+.navbutton{
+    background:none;
+    border:none;
+    color:#ffe5fe;
+    font-family:Georgia, serif;
+    font-size:16px;
+    cursor:pointer;
 }
 
 .content {
@@ -138,6 +115,7 @@ body {
     padding: 10px 20px;
     color:#ffe5fe; 
     border-radius: 10%;
+    text-decoration: none;
 }
 
     #works{
@@ -187,7 +165,7 @@ body {
   flex: 1;
 }
 
-.notebook{
+.vn{
     display:inline-block;
     gap: 50px; 
     height: 130px;
@@ -204,7 +182,7 @@ ul {
 
 #searchInput {
   padding: 8px;
-  width: 250px;
+  width: 230px;
   border: 1px solid #ccc;
   border-radius: 4px;
   height: 50px;
@@ -225,16 +203,30 @@ button:hover {
   background-color: #431558;
 }
 
+.logo img {
+    width:60%;
+    height:auto;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
 </style>
 
     <nav class="sidebar">
-        <div class="logo">✨</div>
+        <div class="logo">
+        <img src="logo.png">
+        </div>
 
         <a href="dashboard.html" class="nav-item">Dashboard</a>
-        <a href="notebook.html" class="nav-item active">Virtual Notebooks</a>
+        <a href="vns.html" class="nav-item active">Virtual Notebooks</a>
         <a href="tasks.html" class="nav-item">Tasks</a>
         <a href="profile.html" class="nav-item">Profile</a>
-        <a href="#" class="nav-item"><button class="navbutton" id="showAlert" onclick="('This is a navbar alert!')"><h3>Logout</h3></button></a>
+        <a href="#" class="nav-item" id="showAlert" style="font-weight:bold;">Logout</a>
     </nav>
 
 <div id="customAlert" class="alert-box">
@@ -292,15 +284,15 @@ button:hover {
 <br>
 <br>
 
-<ul id="notebooklist">
+<ul id="vnlist">
 
 
 
 <li>
 <div class="flex-container">
-<a href="pflnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="pflvn.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="pfl.png" class="notebook"></h2>
+        <h2 class="h2"><img src="pfl.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -313,9 +305,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="magiartnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="mavn.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-    <h2 class="h2"><img src="main.png" class="notebook"></h2>
+    <h2 class="h2"><img src="MA.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -328,9 +320,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="ponyhisnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="ponyhis.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook></h2>
+        <h2 class="h2"><img src="PH.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -344,7 +336,7 @@ button:hover {
 <div class="flex-container">
 <a href="anicare.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
+        <h2 class="h2"><img src="AC.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -356,9 +348,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="eurolangnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="eurolang.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
+        <h2 class="h2"><img src="EURO.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -370,9 +362,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="potionsnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="potions.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
+        <h2 class="h2"><img src="P.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -384,9 +376,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="astronomnotebook.html" style="text-decoration: none; color:#560883;">
+<a href="astronomy.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
+        <h2 class="h2"><img src="ASTRO.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -398,23 +390,9 @@ button:hover {
 
 <li>
 <div class="flex-container">
-<a href="alchemynotebook.html" style="text-decoration: none; color:#560883;">
+<a href="music.html" style="text-decoration: none; color:#560883;">
 <section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                ALCHEMY
-</section>
-</a>
-</div>
-</li>
-
-<li>
-<div class="flex-container">
-<a href="musicnotebook.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="notebook"></h2>
+        <h2 class="h2"><img src="MUSIC.png" class="vn"></h2>
         <div class="works-gallery">
 
             <div class="work-item">
@@ -429,7 +407,7 @@ button:hover {
 
 <script>
 const searchInput = document.getElementById('searchInput');
-const itemList = document.getElementById('notebooklist');
+const itemList = document.getElementById('vnlist');
 const items = itemList.getElementsByTagName('li');
 
 searchInput.addEventListener('keyup', function() {
@@ -446,6 +424,14 @@ searchInput.addEventListener('keyup', function() {
     }
   }
 });
+
+window.addEventListener('click', function(e){
+    if(e.target == customAlert){
+        customAlert.style.display = 'none';
+    }
+
+});
+    
 </script>
 
 </main>
@@ -458,4 +444,5 @@ searchInput.addEventListener('keyup', function() {
        
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
 </html>
