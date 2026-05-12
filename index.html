@@ -21,11 +21,16 @@ body {
     position: fixed;
 }
 
-.logo {
-    color: white;
-    text-align: left;
-    font-size: 30px;
-    margin-bottom: 30px;
+.logo img {
+    width:60%;
+    height:auto;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
 }
 
 .nav-item {
@@ -101,9 +106,9 @@ body {
 
 .form-container {
   display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center;     /* Vertical centering */
-  min-height: 100vh;       /* Full viewport height */
+  justify-content: center; 
+  align-items: center;    
+  min-height: 100vh;       
 }
 
 form{
@@ -182,7 +187,9 @@ form{
 </div>
 <main class="content">
     <form action="dashboard.html" onsubmit="saveData(); return false;">
-    <div class="logo">✨</div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
     <div class="registration-card">
     <div class="left-panel">
         <div class="profile-placeholder">
