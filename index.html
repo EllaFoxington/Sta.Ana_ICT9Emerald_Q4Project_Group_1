@@ -11,6 +11,12 @@ body {
     overflow: hidden;
 }
 
+@keyframes bgFloat {
+    from { background-position: center top; }
+    to { background-position: center bottom; }
+}
+
+
 .sidebar {
     width: 230px;
     height: 100vh;
@@ -21,16 +27,11 @@ body {
     position: fixed;
 }
 
-.logo img {
-    width:60%;
-    height:auto;
-    animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0px);}
+.logo {
+    color: white;
+    text-align: left;
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
 .nav-item {
@@ -42,21 +43,20 @@ body {
 }
 
 .nav-item:hover {
-    background: #431558;
+    background: #a351c9;
     color: white;
-    
+    transform: translateX(5px);
+}
+
+.nav-item.active {
+    background: #a351c9;
+    border-left: 4px solid #98228a;
+    font-weight: bold;
 }
 
 .button1 {
     background: #a351c9;
     color: white;
-}
-
-
-.nav-item.active {
-    background:  #a351c9;
-    border-left: 4px solid #98228a;
-    font-weight: bold;
 }
 
 .content{
@@ -106,9 +106,9 @@ body {
 
 .form-container {
   display: flex;
-  justify-content: center; 
-  align-items: center;    
-  min-height: 100vh;       
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
+  min-height: 100vh;       /* Full viewport height */
 }
 
 form{
@@ -136,6 +136,19 @@ form{
     height:100%;
 }
 
+.logo img {
+    width:60%;
+    height:auto;
+    animation:float 3s ease-in-out infinite;
+    padding-left: 100px;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
 </style>
 </head>
 <body>
@@ -161,6 +174,7 @@ form{
 <span class="dot"></span> 
 <span class="dot"></span> 
 <span class="dot"></span> 
+
 
             <script>
                 let slideIndex = 0;
@@ -232,28 +246,18 @@ form{
     </form>
 
 <script>
-function saveData() {
-    const name = document.getElementById('inputFieldname').value.trim();
-    const pass = document.getElementById('inputFieldpass').value.trim();
-    const phone = document.getElementById('inputFieldconnumber').value.trim();
-    const email = document.getElementById('inputFieldemail').value.trim();
-
-    if (!name || !pass || !phone || !email) {
-        alert("Please finish the form.");
-        return;
-    }
-
-    if (name.length !== 8) {
-        alert("Student id must be exactly 8 characters, please try again.");
-        return;
-    }
+    function saveData() {
+    const name = document.getElementById('inputFieldname').value;
+    const pass = document.getElementById('inputFieldpass').value;
+    const phone = document.getElementById('inputFieldconnumber').value;
+    const email = document.getElementById('inputFieldemail').value;
 
     localStorage.setItem('sharedText1', name);
     localStorage.setItem('sharedText2', pass);
     localStorage.setItem('sharedText3', phone);
     localStorage.setItem('sharedText4', email);
 
-    window.location.href = 'dashboard.html';
+    window.location.href = 'dashboard.html'; 
 }
 </script>
 
