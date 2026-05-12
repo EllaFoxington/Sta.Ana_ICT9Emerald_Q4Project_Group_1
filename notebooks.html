@@ -1,461 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Virtual Notebooks || School of Friendship </title>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Virtual Notebooks || School of Friendship</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: Georgia, serif;
-    display: flex;
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.sidebar {
-    width: 230px;
-    height: 100vh;
-    background: #560883;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    position: fixed;
+body{
+    font-family:'Quicksand', sans-serif;
+    display:flex;
+    background:#f3f3f3;
 }
 
-.logo {
-    color: white;
-    text-align: left;
-    font-size: 30px;
-    margin-bottom: 30px;
+.sidebar{
+    width:230px;
+    height:100vh;
+    background:#560883;
+    display:flex;
+    flex-direction:column;
+    padding-top:20px;
+    position:fixed;
+    left:0;
+    top:0;
 }
 
-.nav-item {
-    color: #ffe5fe;
-    text-decoration: none;
-    padding: 15px 25px;
-    display: block;
-    transition: 0.3s;
+.logo{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.nav-item:hover {
-    background: #a351c9;
-    color: white;
+.logo img{
+    width:70%;
+    height:auto;
+    animation:float 3s ease-in-out infinite;
 }
 
-.nav-item.active {
-    background:  #a351c9;
-    border-left: 4px solid #98228a;
-    font-weight: bold;
+.nav-item{
+    color:#ffe5fe;
+    text-decoration:none;
+    padding:15px 25px;
+    display:block;
+    transition:0.3s;
 }
 
-.navbutton {
-    height: 100%;
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #560883;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
+.nav-item:hover{
+    background:#a351c9;
+    color:white;
 }
 
-.navbutton:hover {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
+.nav-item.active{
+    background:#a351c9;
+    border-left:4px solid #98228a;
+    font-weight:bold;
 }
 
-.navbutton:focus {
-    height: 100%; 
-    display: flex;
-    align-items: center; 
-    padding: 0px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    text-decoration: none;
-    border: none;
-    font-family: Georgia, serif;
-    font-weight: bold;
+.navbutton{
+    background:none;
+    border:none;
+    color:#ffe5fe;
+    font-family:'Quicksand', sans-serif;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.content {
-    margin-left: 230px;
-    padding: 20px;
-    width: 100%;
+.content{
+    margin-left:230px;
+    padding:30px;
+    width:100%;
 }
 
 .alert-box{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
 }
 
 .alert-content{
-    background-color:#ffe5fe;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background:#ffe5fe;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
+    text-align:center;
 }
 
-.alert-content h2{
-    font-size: 22px;
-    margin-bottom: 10px;
-    color:#333;
+#searchInput{
+    width:300px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 
-.alert-content p{
-    font-size: 16px;
-    margin-bottom: 20px;
-    color:#666;
+#vnlist{
+    list-style:none;
+    margin-top:20px;
 }
 
-.alert-content button{
-    padding: 10px 20px;
-    background-color: #a351c9;
-    color: #ffe5fe;
-    border: none;
-    cursor: pointer;
-    border-radius: 10%;
+li{
+    margin-bottom:15px;
 }
 
-.alert-content a{
-    padding: 10px 20px;
-    color:#ffe5fe; 
-    border-radius: 10%;
+.vn-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-    #works{
-    padding: 5px;
-    max-width: 330px;
-    background-color: rgba(255, 255, 255, 0.85);
-    margin-top: 20px;
-    border-radius: 10px;
-    text-align: center;
-    animation: slideUp 1.5s ease-out;
-    
+.vn-card img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:10px;
 }
 
-.works-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    
-}
-
-.work-item {
-    flex: 1 1 45%;
-    text-align: left;
-}
-
-.work-item img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.5s ease;
-}
-
-.work-item img:hover {
-    transform: scale(1.05);
-}
-
-.flex-container {
-  display:inline-block;
-  gap: 50px; 
-  margin-bottom: 25px;
-  margin-right: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  height: 250px;
-  width: 300px;
-  border-radius: 10px;
-}
-.flex-container section {
-  flex: 1;
-}
-
-.vn{
-    display:inline-block;
-    gap: 50px; 
-    height: 130px;
-    border-radius: 10px;
-}
-
-ul {
-  display: flex;
-  flex-wrap: wrap; 
-  list-style: none;
-  padding: 0;
-  gap: 10px;  
-}
-
-#searchInput {
-  padding: 8px;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  height: 50px;
-  width: 1000px;
-}
-
-button {
-  padding: 8px 15px;
-  background-color: #a351c9;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  height: 50px;
-}
-
-button:hover {
-  background-color: #431558;
+@keyframes float{
+    0%{transform:translateY(0%);}
+    50%{transform:translateY(-8%);}
+    100%{transform:translateY(0%);}
 }
 
 </style>
+</head>
 
-    <nav class="sidebar">
-        <div class="logo">✨</div>
+<body>
 
-        <a href="dashboard.html" class="nav-item">Dashboard</a>
-        <a href="vns.html" class="nav-item active">Virtual Notebooks</a>
-        <a href="tasks.html" class="nav-item">Tasks</a>
-        <a href="profile.html" class="nav-item">Profile</a>
-        <a href="#" class="nav-item"><button class="navbutton" id="showAlert" onclick="('This is a navbar alert!')"><h3>Logout</h3></button></a>
-    </nav>
+<nav class="sidebar">
 
-<div id="customAlert" class="alert-box">
-    <div class="alert-content">
-        <h2>Are you SURE you want to log out?</h2>
-        <p>(this cannot be undone)</p>
-        <button id="confirmBtn" class="confirmBtn"><a href="index.html"> im sure </a></button>
-    </div>
-
+<div class="logo">
+<img src="logo.png">
 </div>
 
-<script>
-    const links = document.querySelectorAll(".nav-item");
+<a href="dashboard.html" class="nav-item">Dashboard</a>
+<a href="vns.html" class="nav-item active">Virtual Notebooks</a>
+<a href="tasks.html" class="nav-item">Tasks</a>
+<a href="profile.html" class="nav-item">Profile</a>
 
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            links.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
-        });
-    });
+<a href="#" class="nav-item">
+<button class="navbutton" id="showAlert">Logout</button>
+</a>
 
-    const showAlertBtn = document.getElementById('showAlert');
-    const customAlert = document.getElementById('customAlert');
-    const confirmBtn = document.getElementById('confirmBtn');
+</nav>
 
-    showAlertBtn.addEventListener('click', function(){
-    customAlert.style.display ='flex';
-    });
-
-    confirmbtn.addEventListener('click', function(){
-        customAlert.style.display = 'none';
-
-    });
-
-</script>
-
+<div id="customAlert" class="alert-box">
+<div class="alert-content">
+<h2>Are you SURE you want to log out?</h2>
+<p>(this cannot be undone)</p>
+<button><a href="index.html" style="color:white;text-decoration:none;">I'm sure</a></button>
+</div>
+</div>
 
 <main class="content">
 
-<br>
-<br>
-
-<search>
-  <form id="searchForm">
-    <input type="search" id="searchInput" placeholder="Search items..." aria-label="Search through site content">
-    <button type="submit">Search</button>
-  </form>
-</search>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<input type="search" id="searchInput" placeholder="Search notebooks...">
 
 <ul id="vnlist">
 
-
-
 <li>
-<div class="flex-container">
-<a href="pflvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="pfl.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                PRACTICAL FRIENDSHIP LESSONS
-        </div>
-</section>
-</a>
+<a href="pflvn.html">
+<div class="vn-card">
+<img src="pfl.png">
+<span>Practical Friendship Lessons</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="magiartvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-    <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                MAGICAL ARTIFACTS
-            </div>
-</section>
-</a>
+<a href="magicartvn.html">
+<div class="vn-card">
+<img src="magic.png">
+<span>Magical Artifacts</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="ponyhisvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-               PONY HISTORY
-</section>
-</a>
+<a href="ponyhistoryvn.html">
+<div class="vn-card">
+<img src="ponyhis.png">
+<span>Pony History</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="anicare.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                ANIMAL CARE
-</section>
-</a>
+<a href="anicare.html">
+<div class="vn-card">
+<img src="animalcare.png">
+<span>Animal Care</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="eurolangvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                EUROPEAN LANGUAGES
-</section>
-</a>
+<a href="europeanlangvn.html">
+<div class="vn-card">
+<img src="europeanlang.png">
+<span>European Languages</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="potionsvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                POTIONS
-</section>
-</a>
+<a href="potionsvn.html">
+<div class="vn-card">
+<img src="potions.png">
+<span>Potions</span>
 </div>
+</a>
 </li>
 
 <li>
-<div class="flex-container">
-<a href="astronomvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                ASTRONOMY
-</section>
-</a>
+<a href="astronomvn.html">
+<div class="vn-card">
+<img src="astronomy.png">
+<span>Astronomy</span>
 </div>
+</a>
 </li>
+
+
 
 <li>
-<div class="flex-container">
-<a href="alchemyvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                ALCHEMY
-</section>
-</a>
+<a href="musicvn.html">
+<div class="vn-card">
+<img src="music.png">
+<span>Music</span>
 </div>
+</a>
 </li>
 
-<li>
-<div class="flex-container">
-<a href="musicvn.html" style="text-decoration: none; color:#560883;">
-<section id="works">
-        <h2 class="h2"><img src="main.png" class="vn"></h2>
-        <div class="works-gallery">
-
-            <div class="work-item">
-                MUSIC
-</section>
-</a>
-</div>
-</li>
-
-</div>
 </ul>
-
-<script>
-const searchInput = document.getElementById('searchInput');
-const itemList = document.getElementById('vnlist');
-const items = itemList.getElementsByTagName('li');
-
-searchInput.addEventListener('keyup', function() {
-  const filter = searchInput.value.toLowerCase(); // Get user input and make it lowercase
-
-  for (let i = 0; i < items.length; i++) {
-    const textValue = items[i].textContent || items[i].innerText;
-    
-    // If the item text matches the search, show it; otherwise, hide it
-    if (textValue.toLowerCase().indexOf(filter) > -1) {
-      items[i].style.display = "";
-    } else {
-      items[i].style.display = "none";
-    }
-  }
-});
-</script>
 
 </main>
 
-</body>
-</section>
-<br><br><br>
+<script>
 
- <div class="footer">
-       
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+const showAlertBtn=document.getElementById("showAlert");
+const customAlert=document.getElementById("customAlert");
+
+showAlertBtn.addEventListener("click",()=>{
+customAlert.style.display="flex";
+});
+
+window.addEventListener("click",(e)=>{
+if(e.target==customAlert){
+customAlert.style.display="none";
+}
+});
+
+const searchInput=document.getElementById("searchInput");
+const items=document.querySelectorAll("#vnlist li");
+
+searchInput.addEventListener("keyup",function(){
+const filter=this.value.toLowerCase();
+
+items.forEach(item=>{
+item.style.display=item.textContent.toLowerCase().includes(filter)?"":"none";
+});
+});
+
+</script>
+
 </body>
 </html>
