@@ -5,8 +5,9 @@
 <meta charset="UTF-8">
 <title>Dashboard</title>
 
-
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 *{
     margin:0;
@@ -15,10 +16,11 @@
 }
 
 body{
-    font-family: Georgia, serif;
+    font-family:'Quicksand', sans-serif;
     display:flex;
     background:#f3f3f3;
 }
+
 .sidebar{
     width:230px;
     height:100vh;
@@ -30,12 +32,12 @@ body{
     left:0;
     top:0;
 }
+
 .logo{
-    color:white;
     text-align:center;
-    font-size:40px;
     margin-bottom:30px;
 }
+
 .nav-item{
     color:#ffe5fe;
     text-decoration:none;
@@ -54,19 +56,20 @@ body{
     border-left:4px solid #98228a;
     font-weight:bold;
 }
+
 .navbutton{
     background:none;
     border:none;
     color:#ffe5fe;
-    font-family:Georgia, serif;
+    font-family:'Quicksand', sans-serif;
     font-size:16px;
     cursor:pointer;
 }
+
 .content{
     margin-left:230px;
     padding:30px;
     width:100%;
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -83,6 +86,7 @@ body{
     font-weight:bold;
     margin-bottom:20px;
 }
+
 .card{
     background:white;
     width:550px;
@@ -96,25 +100,13 @@ body{
     margin-bottom:20px;
 }
 
-.quarter{
-    margin-bottom:25px;
+.card-img{
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    object-fit:cover;
 }
 
-.quarter span{
-    background:#dcace6;
-    padding:3px 8px;
-    font-size:14px;
-    font-weight: bold;
-}
-
-ul{
-    margin-top:10px;
-    margin-left:20px;
-}
-
-li{
-    margin-bottom:5px;
-}
 .alert-box{
     display:none;
     position:fixed;
@@ -157,19 +149,23 @@ li{
     color:white;
 }
 
-.card-img{
-    width:100%;
-    height:auto;
-    border-radius:12px;
-    object-fit:cover;
+@keyframes float{
+    0%{transform:translateY(0%);}
+    50%{transform:translateY(-8%);}
+    100%{transform:translateY(0%);}
 }
+
 </style>
 </head>
 
 <body>
+
 <nav class="sidebar">
 
-    <div class="logo">✨</div>
+    <div class="logo">
+        <img src="logo.png"
+        style="width:60%; height:auto; animation:float 3s ease-in-out infinite;">
+    </div>
 
     <a href="index.html" class="nav-item active">Dashboard</a>
     <a href="notebooks.html" class="nav-item">Virtual Notebooks</a>
@@ -177,109 +173,65 @@ li{
     <a href="profile.html" class="nav-item">Profile</a>
 
     <a href="#" class="nav-item">
-        <button class="navbutton" id="showAlert">
-            Logout
-        </button>
+        <button class="navbutton" id="showAlert">Logout</button>
     </a>
 
 </nav>
+
 <div id="customAlert" class="alert-box"> 
     <div class="alert-content"> 
         <h2>Are you SURE you want to log out?</h2>
-         <p>(this cannot be undone)</p> <button id="confirmBtn" class="confirmBtn">
-            <a href="login.html"> im sure </a></button>
-     </div>
-
+        <p>(this cannot be undone)</p>
+        <button><a href="login.html">im sure</a></button>
+    </div>
 </div>
 
-<main class="content justify-content-center d-flex align-items-center">
+<main class="content">
 
-    <div class="dashboard-box">
-        Dashboard
+    <div class="dashboard-box">Dashboard</div>
+
+    <div class="card">
+        <h2>Welcome to the School of Friendship!</h2>
+        <img src="https://i.redd.it/5qz6zrgm8n6e1.jpg" class="card-img">
+        <p>Friendship conquers all! Welcome everycreature!</p>
     </div>
 
-    <div class="card" style="text-align: center;">
-        <div class="quarter">
-            <h2>Welcome to the School of Friendship!</h2>
-            <img src="https://preview.redd.it/do-yall-like-the-school-of-friendship-arc-v0-5qz6zrgm8n6e1.jpg?width=1024&format=pjpg&auto=webp&s=905a6c9821737498b4c932019c6b432fb7128d60"
-            class="card-img"> <br><br>
-            <p>Here at the School of Friendship, we believe that friendship conquers all! 
-               Enroll now to help us spread the magic of friendship across Equestria! 
-               C'mon, everycreature!
-            </p>
-        </div>
+    <div class="card">
+        <h2>Crisis Averted!</h2>
+        <img src="https://static.wikia.nocookie.net/mlp/images/7/7f/Young_Six_around_Starlight%27s_prison_S8E26.png/revision/latest?cb=20181017153801"
+        class="card-img" referrerpolicy="no-referrer">
+        <p>Magic has been restored thanks to the students!</p>
     </div>
 
-    <br>
-
-    <div class="card" style="text-align: center;">
-        <div class="quarter">
-            <h2>Crisis Averted!</h2>
-            <img src="https://static.wikia.nocookie.net/mlp/images/7/7f/Young_Six_around_Starlight%27s_prison_S8E26.png/revision/latest/scale-to-width-down/1000?cb=20181017153801"
-            class="card-img"> <br><br>
-            <p>We would like to inform everyone that the crisis is over! Magic has been
-                returned to Equestria, all thanks to our pride and joy, you students!
-                Please don't forget to thank these 6 heroes if you see them around campus!
-            </p>
-        </div>
+    <div class="card">
+        <h2>Warning to Everycreature!</h2>
+        <img src="https://static.wikia.nocookie.net/mlp/images/2/28/Celestia_addressing_Mane_Six_and_Cadance_S8E25.png/revision/latest?cb=20181014232253"
+        class="card-img" referrerpolicy="no-referrer">
+        <p>Please avoid risky magic use!</p>
     </div>
 
-    <br>
-
-    <div class="card" style="text-align: center;">
-        <div class="quarter">
-            <h2>Warning to Everycreature!</h2>
-            <img src="https://static.wikia.nocookie.net/mlp/images/2/28/Celestia_addressing_Mane_Six_and_Cadance_S8E25.png/revision/latest/scale-to-width-down/1000?cb=20181014232253"
-            class="card-img"> <br><br>
-            <p> The School Administration would like to warn everycreature about the
-                recent incidents involving magic-loss. Please refrain from doing strenuous
-                activities involving your wings and horns, because it may end in injury.
-                Thank you!
-            </p>
-        </div>
+    <div class="card">
+        <h2>Approval!</h2>
+        <img src="https://static.wikia.nocookie.net/mlp/images/a/a1/Twilight_smirking_at_Chancellor_Neighsay_S8E2.png/revision/latest?cb=20180327200150"
+        class="card-img" referrerpolicy="no-referrer">
+        <p>School officially approved!</p>
     </div>
 
-    <br>
-
-    <div class="card" style="text-align: center;">
-        <div class="quarter">
-            <h2>Approval!</h2>
-            <img src="https://static.wikia.nocookie.net/mlp/images/a/a1/Twilight_smirking_at_Chancellor_Neighsay_S8E2.png/revision/latest/scale-to-width-down/1000?cb=20180327200150"
-            class="card-img"> <br><br>
-            <p> Everycreature! We've done it! We've gotten approval from Chancellor Neighsay himself to open the school! 
-                We couldn't have done it without you, students! We are so proud of you all!
-            </p>
-        </div>
-    </div>
 </main>
 
 <script>
 
-const links = document.querySelectorAll(".nav-item");
-
-links.forEach(link => {
-    link.addEventListener("click", () => {
-        links.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-    });
-
-});
-
 const showAlertBtn = document.getElementById('showAlert');
-
 const customAlert = document.getElementById('customAlert');
 
-showAlertBtn.addEventListener('click', function(){
-
+showAlertBtn.addEventListener('click', () => {
     customAlert.style.display = 'flex';
-
 });
 
-window.addEventListener('click', function(e){
+window.addEventListener('click', (e) => {
     if(e.target == customAlert){
         customAlert.style.display = 'none';
     }
-
 });
 
 </script>
