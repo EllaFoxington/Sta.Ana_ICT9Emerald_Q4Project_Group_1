@@ -232,18 +232,28 @@ form{
     </form>
 
 <script>
-    function saveData() {
-    const name = document.getElementById('inputFieldname').value;
-    const pass = document.getElementById('inputFieldpass').value;
-    const phone = document.getElementById('inputFieldconnumber').value;
-    const email = document.getElementById('inputFieldemail').value;
+function saveData() {
+    const name = document.getElementById('inputFieldname').value.trim();
+    const pass = document.getElementById('inputFieldpass').value.trim();
+    const phone = document.getElementById('inputFieldconnumber').value.trim();
+    const email = document.getElementById('inputFieldemail').value.trim();
+
+    if (!name || !pass || !phone || !email) {
+        alert("Please finish the form.");
+        return;
+    }
+
+    if (name.length !== 8) {
+        alert("Student id must be exactly 8 characters, please try again.");
+        return;
+    }
 
     localStorage.setItem('sharedText1', name);
     localStorage.setItem('sharedText2', pass);
     localStorage.setItem('sharedText3', phone);
     localStorage.setItem('sharedText4', email);
 
-    window.location.href = 'dashboard.html'; 
+    window.location.href = 'dashboard.html';
 }
 </script>
 
